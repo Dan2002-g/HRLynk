@@ -1,0 +1,268 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+:root {
+  --c-text-primary: #282a32;
+  --c-text-secondary: #686b87;
+  --c-text-action: #404089;
+  --c-accent-primary: #434ce8;
+  --c-border-primary: #eff1f6;
+  --c-background-primary: #ffffff;
+  --c-background-secondary: #fdfcff;
+  --c-background-tertiary: #ecf3fe;
+  --c-background-quaternary: #e9ecf4;
+}
+
+body {
+  display: flex;
+  line-height: 1.5;
+  min-height: 100vh;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif, sans-serif;
+  background-color: var(--c-background-secondary);
+  color: var(--c-text-primary);
+}
+.logo {
+ text-align: center;
+ padding-bottom: 20px;
+}
+.sidebar {
+  width: 100px; /* Adjust width as needed */
+  background-color: var(--c-background-primary);
+  height: 100vh; /* Full height */
+  padding: 10px;
+  position: fixed; /* Fixes sidebar to the left */
+}
+
+.side-nav{
+  padding-top: 455px;
+  position: fixed;
+}
+
+.sidebar-navigation {
+  display: flex;
+  flex-direction: column;
+
+}
+.sidebar-link {
+  padding: 10px 10px; /* Adds padding around the text */
+  border-bottom: 1px solid rgb(0, 0, 0); /* Adds a border around the box */
+  text-decoration: none; /* Removes underline from links */
+  color: maroon; /* Sets the text color */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition effect */
+}
+
+.sidebar-link:hover {
+  background-color: rgba(128, 0, 0, 0.984) !important; /* Changes background on hover */
+  color: rgb(255, 255, 255) !important; /* Changes text color on hover */
+}
+.sidebar-link:active {
+  background-color: rgba(128, 0, 0, 0.984) !important; /* Changes background on hover */
+  color: rgb(255, 255, 255) !important; /* Changes text color on hover */
+}
+.sidebar-navigation a {
+  margin: 10px 0; /* Space between links */
+  text-decoration: none;
+  color: var(--c-text-action);
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.sidebar-navigation a:hover, .sidebar-navigation a:focus, .sidebar-navigation a:active {
+  color: var(--c-accent-primary);
+}@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;400;700&display=swap");
+
+:root {
+  --bg-img-url: url("../Homepage/images/bg1.jpg");
+  --bg-gradient-color: rgba(138, 32, 32, 0.75);
+  --text-shadow-color: rgba(187, 38, 38, 0.75);
+}
+
+body {
+  display: flex;
+  font-family: "Be Vietnam Pro", sans-serif;
+  background-color: #fdfcff;
+  color: #ffffff;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #ffffff;
+  height: 100vh;
+  padding: 10px;
+  position: fixed;
+}
+
+.sidebar-navigation a {
+  margin: 10px 0;
+  text-decoration: none;
+  color: #404089;
+  font-weight: 300;
+  transition: color 0.15s ease;
+}
+
+h1 {
+  color: maroon;
+  font-size: 30px !important;
+  font-weight: 800;
+}
+
+.feature h2 {
+  color: maroon;
+}
+
+.feature a {
+  color: gold;
+  text-shadow: 0.5px 0.5px maroon;
+}
+
+
+main {
+  margin-top: 50px;
+  margin-left: 280px; /* Adjust to match the width of the sidebar + some spacing */
+  margin-right: 80px;
+  padding: 0px; /* Add padding for main content */
+  flex-grow: 1; /* Allow the main content to take available space */
+}
+.main-header h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.horizontal{
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+
+}
+.horizontal:hover{
+    color: maroon !important;
+}
+
+.horizontal-position{
+    align-content: left;
+}
+.horizontal-tabs{
+  border-bottom: 1px solid rgb(0, 0, 0);
+  border-bottom-width: 100%;
+}
+
+.horizontal-button {
+    padding: 5px 10px; /* Add more padding for better size */
+    border: 1px solid rgb(0, 0, 0); /* Adds a border */
+    text-decoration: none; /* Removes underline */
+    color: maroon; /* Sets text color */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+    border-radius: 5px; /* Rounds the corners */
+    display: inline-flex; /* Aligns icon and text */
+}
+
+.horizontal-button i {
+    margin-left: 5px; /* Adds space between icon and text */
+}
+
+.horizontal-button:hover {
+    background-color: rgba(128, 0, 0, 0.984) !important; /* Background on hover */
+    color: rgb(255, 255, 255) !important; /* Text color on hover */
+}
+
+.formbold-form-wrapper {
+    padding: 5px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.formbold-mb-3 {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: black;
+}
+
+input[type="text"],
+input[type="date"],
+select {
+    width: 83%;
+    padding-right: 5px;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 0px;
+}
+
+/* Table styles for Competency Assessment */
+/* General table styling */
+/* General table styling */
+/* General table styling */
+
+
+
+/* Objective section text */
+.objective-section {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+
+.objective-label {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+/* Button styles */
+/* Button styles */
+button.formbold-btn, input.formbold-btn {
+    background-color: maroon; /* Main background color */
+    color: white; /* Text color */
+    padding: 5px 10px; /* Padding for button */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer on hover */
+    font-size: 14px; /* Font size */
+    transition: background-color 0.3s ease, transform 0.2s; 
+    display: inline-block; 
+
+button.formbold-btn:hover, input.formbold-btn:hover {
+    background-color: darkred; 
+}
+
+button.formbold-btn.add-btn {
+    background-color: #4CAF50;
+}
+
+button.formbold-btn.add-btn:hover {
+    background-color: #45a049;
+}
+
+button.formbold-btn.submit-btn {
+    background-color: #007BFF; 
+}
+
+button.formbold-btn.submit-btn:hover {
+    background-color: #0056b3; 
+}
+
+.button-container {
+    display: flex; 
+    gap: 10px; 
+    margin-top: 10px !important; 
+} 
+.formbold-form-input {
+  margin: 8px 0; /* Adds margin around all input fields */
+  padding: 8px; /* Provides some padding inside the input fields */
+  border: 1px solid #ccc; /* Creates a border for the input fields */
+  border-radius: 4px; /* Rounds the corners of the fields slightly */
+  width: 100%; /* Ensures the fields take the full width of their container */
+  box-sizing: border-box; /* Includes padding and border in the element's total width */
+}
+
+textarea.formbold-form-input {
+  resize: vertical; /* Allows vertical resizing but prevents horizontal resizing */
+  min-height: 100px; /* Sets a minimum height for the textarea */
+  max-height: 300px; /* Sets a maximum height to prevent it from growing too large */
+}
+}

@@ -1,0 +1,28 @@
+
+        .edit-modal .modal-header {
+            background-color: maroon;
+            color: white;
+        }
+        .edit-modal .modal-title{
+            color: white;
+        }
+        .edit-modal .modal-lg {
+            max-width: 95%;
+        }
+        .edit-modal .modal-content {
+            height: auto;
+            width: 100%;
+            max-height: 90vh;
+            max-width: 100%;
+            overflow: hidden;
+        }
+        .edit-modal .modal-body {
+            overflow: hidden;
+        }
+        .edit-modal .modal.fade .modal-dialog {
+            transform: translate(0, 0);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) !important;
+            position: absolute;
+        }
