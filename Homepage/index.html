@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="top-right-link">
+        <a href="competency_board.html">Learn more about competencies?</a>
+    </div>
+    <div class="sidebar">
+        <div class="logo">
+            <a href="index.html" style="font-size: 32px; font-weight: bold; color: maroon; text-decoration: none;">
+                <span style="color: maroon;">HR</span><span style="color: gold; text-shadow: 1px 1px maroon;">Lynk</span>
+            </a>
+            <a href="../Homepage/logout.php" style="font-size: 32px; font-weight: bold; color: maroon; text-decoration: none;">
+              <h4>Employee Portal</h4>
+        </div>
+        <nav class="sidebar-navigation">
+            <a href="index.html" class="sidebar-link active">Home</a>
+            <a href="../IDP/idpdashboard.php" class="sidebar-link">IDP</a>
+            <a href="../Training Request/trainingform.php" class="sidebar-link">Request Training</a>
+            <a href="../Training Request/trainingdashboard.php" class="sidebar-link">Training History</a>
+        </nav>
+        <nav class="sidebar-navigation side-nav">
+          <a href="../Profile/profiledisplay.php" class="icon-button" aria-label="Profile"><i class="bi bi-person-circle"></i> Profile</a>
+          <a href="logout.php" class="icon-button" aria-label="Logout"><i class="bi bi-box-arrow-right"></i> Logout</a>
+        </nav>
+    </div>
+        
+        
+
+    <main class="bg-container">
+        <section class="py-1" id="features">
+            <div class="container py-5 row gx-5 justify-content-center">
+                <div class="col-lg-6">
+                    <div class="text-center my-5">
+                        <h1 class="display-5 fw-bolder">Learning & Development</h1>
+                        <p class="lead">Involves programs to boost staff skills and knowledge, fostering growth and enhancing job performance within the university community.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="container px-5 my-7">
+                <div class="row gx-7">
+                    <div class="col-lg-4 mb-5 mb-lg-0 boxes">
+                        <div class="feature-box">
+                            <a href="../IDP/idpdashboard.php">
+                                <img src="https://cdn-icons-png.flaticon.com/128/2098/2098313.png" alt="Individual Development Plan" class="icon">
+                            </a>
+                            <h2 class="h4 fw-bolder">Annual Individual Development Plan (AIDP)</h2>
+                            <p style="text-align: justify;">
+                              The Annual Individual Development Plan (AIDP) is a competency-based personal action plan, jointly agreed by the employee and the supervisor. An AIDP also identifies the training, and other developmental experiences needed to achieve those goals, for the benefit of the individual and organization, within a specified time. It is a tool for objective and competency-based learning and development management system for MSU-IIT which aims to identify priority competency development targets/needs of officials and employees; provide Learning and Development interventions that are appropriate to bridge the competency gaps, enhance competencies, improve job performance, increase productivity and develop the MSU-IIT workforce.
+                          </p>
+                            <a class="view-button text-decoration-none" href="../IDP/idpdashboard.php">View IDP</a>
+                        </div>
+                    </div>
+                
+                    <div class="col-lg-4 mb-5 mb-lg-0 boxes">
+                        <div class="feature-box">
+                            <a href="../Training Request/trainingdashboard.php">
+                                <img src="https://cdn-icons-png.flaticon.com/128/8157/8157942.png" alt="External Training Request" class="icon">
+                            </a>
+                            <h2 class="h4 fw-bolder">External Training Request</h2>
+                            <p>Request Training outside the university to develop your specific Competencies. </p>
+                            <a class="view-button text-decoration-none" href="../Training Request/trainingform.php">View Training</a>
+                        </div>
+                    </div>
+                
+                    <div class="col-lg-4 boxes">
+                        <div class="feature-box">
+                            <a href="../Training Request/trainingdashboard.php">
+                                <img src="https://cdn-icons-png.flaticon.com/128/2912/2912773.png" alt="Terminal Report" class="icon">
+                            </a>
+                            <h2 class="h4 fw-bolder">Terminal Report & Learning Application Plan</h2>
+                            <p>After completing your training, submit your Terminal Report and Learning Application Plan to enhance your Competencies.</p>
+                            <a class="view-button text-decoration-none" href="../Training Request/trainingdashboard.php">View Dashboard</a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/scripts.js"></script>
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    <script src='https://unpkg.com/phosphor-icons'></script>
+    <script src="./script.js"></script>
+</body>
+</html>
+
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --c-text-primary: #282a32;
+  --c-text-secondary: #686b87;
+  --c-text-action: #404089;
+  --c-accent-primary: #434ce8;
+  --c-border-primary: #eff1f6;
+  --c-background-primary: #ffffff;
+  --c-background-secondary: #fdfcff;
+  --c-background-tertiary: #ecf3fe;
+  --c-background-quaternary: #e9ecf4;
+}
+
+body {
+  display: flex;
+  line-height: 1.5;
+  min-height: 100vh;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif, sans-serif;
+  background-color: var(--c-background-secondary);
+  color: var(--c-text-primary);
+}
+.logo {
+ text-align: center;
+ padding-bottom: 20px;
+}
+.sidebar {
+  width: 100px; /* Adjust width as needed */
+  background-color: var(--c-background-primary);
+  height: 100vh; /* Full height */
+  padding: 10px;
+  position: fixed; /* Fixes sidebar to the left */
+}
+
+.side-nav{
+  padding-top: 455px;
+  position: fixed;
+}
+
+.sidebar-navigation {
+  display: flex;
+  flex-direction: column;
+
+}
+.sidebar-link {
+  padding: 10px 10px; /* Adds padding around the text */
+  border-bottom: 1px solid rgb(0, 0, 0); /* Adds a border around the box */
+  text-decoration: none; /* Removes underline from links */
+  color: maroon; /* Sets the text color */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition effect */
+}
+
+.sidebar-link:hover {
+  background-color: rgba(128, 0, 0, 0.984) !important; /* Changes background on hover */
+  color: rgb(255, 255, 255) !important; /* Changes text color on hover */
+}
+.sidebar-link:active {
+  background-color: rgba(128, 0, 0, 0.984) !important; /* Changes background on hover */
+  color: rgb(255, 255, 255) !important; /* Changes text color on hover */
+}
+.sidebar-navigation a {
+  margin: 10px 0; /* Space between links */
+  text-decoration: none;
+  color: var(--c-text-action);
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.sidebar-navigation a:hover, .sidebar-navigation a:focus, .sidebar-navigation a:active {
+  color: var(--c-accent-primary);
+}@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;400;700&display=swap");
+
+:root {
+  --bg-img-url: url("/images/bg1.jpg");
+  --bg-gradient-color: rgba(138, 32, 32, 0.75);
+  --text-shadow-color: rgba(187, 38, 38, 0.75);
+}
+
+body {
+  display: flex;
+  font-family: "Be Vietnam Pro", sans-serif;
+  background-color: #fdfcff;
+  color: #ffffff;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #ffffff;
+  height: 100vh;
+  padding: 10px;
+  position: fixed;
+}
+
+.sidebar-navigation a {
+  margin: 10px 0;
+  text-decoration: none;
+  color: #404089;
+  font-weight: 300;
+  transition: color 0.15s ease;
+}
+
+.sidebar-navigation a:hover {
+  color: #434ce8;
+}
+
+main {
+  margin-left: 210px;
+  padding: 0px;
+  flex-grow: 1;
+}
+
+.bg-container {
+  padding-left: 10px;
+  padding-right: 10px;
+  background-image: linear-gradient(var(--bg-gradient-color), var(--text-shadow-color)), url(images/bg2.png);
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}
+
+h1 {
+  color: gold;
+  text-shadow: 2px 2px maroon;
+}
+
+.feature h2 {
+  color: maroon;
+}
+
+.feature a {
+  color: gold;
+  text-shadow: 0.5px 0.5px maroon;
+}
+
+.icon {
+  width: 100px;
+  height: auto;
+}
+h4 {
+    font-size: 20px;
+    font-weight: 500;
+    color: gold;
+    text-align: center;
+    margin-top: 0px;
+    shadow: 0.5px 0.5px maroon;
+    text-shadow: 0.5px 0.5px maroon;
+}
+
+main {
+  margin-left: 210px; /* Adjust to match the width of the sidebar + some spacing */
+  padding: 0px; /* Add padding for main content */
+  flex-grow: 1; /* Allow the main content to take available space */
+}
+
+.container-bg-img {
+  width: 100%;
+  min-height: 100vh;
+  background-image: linear-gradient(rgba(138, 32, 32, 0.75),rgba(187, 38, 38, 0.75)),url(/images/bg1.jpg);
+  background-size: cover;
+  background-position: center;
+  padding: 10px 0%;
+}
+
+/* Style each feature box */
+.feature-box {
+  background-color: rgba(206, 218, 40, 0.685);
+  border: 1px solid #dfdfdf;
+  border-radius: 15px;
+  padding: 10px;
+  padding-left: 15px;  
+  padding-right: 15px;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.feature-box h2 {
+  margin-top: 15px;
+  color: black;
+  
+}
+
+.feature-box p {
+  color: rgb(0, 0, 0);
+  margin-top: 10px;
+}
+
+.feature-box a {
+  color: #eee;
+  text-shadow: 0.5px 0.5px maroon;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.feature-box a:hover {
+  color: #eee;
+  text-decoration: underline;
+}
+
+.feature-box img.icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 10px;
+}
+
+/* Adjust layout for responsiveness */
+@media (min-width: 992px) {
+  .boxes {
+    width: auto;
+    padding: 20px;
+  }
+  .feature-box {
+    height: 100%; /* Make sure all boxes have the same height */
+  }
+}
+
+@media (max-width: 991px) {
+  .boxes {
+    width: 100%; /* Make the boxes full-width on smaller screens */
+    margin-bottom: 10px;
+  }
+}
+
+.feature h2 {
+  color: maroon;
+}
+
+.feature p {
+  color: black;
+}
+
+.feature a {
+  color: gold;
+  text-shadow: 0.5px 0.5px maroon;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+:focus {
+  outline: 0;
+}
+
+.responsive-wrapper {
+  width: 90%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.view-button {
+  background-color: maroon; /* Set button background color to maroon */
+  color: white; /* Button text color */
+  border: none; /* Remove border */
+  padding: 5px 10px; /* Add padding for size */
+  border-radius: 8px; /* Rounded corners */
+  cursor: pointer; /* Pointer on hover */
+  text-align: center; /* Center the text */
+  text-decoration: none; /* Remove underline from text */
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+  font-size: 12px; 
+}
+
+.view-button:hover {
+  background-color: #6b0000c0; /* Darker maroon on hover */
+}
+
+.view-button:focus {
+  outline: none; /* Remove focus outline */
+}
+
+/* Responsive adjustments for layout */
+@media (min-width: 768px) {
+  .col-lg-6 {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+  .text-center {
+    text-align: center !important;
+  }
+  .justify-content-center {
+    justify-content: center !important;
+  }
+  .g-5,
+  .gx-5 {
+    --bs-gutter-x: 3rem;
+  }
+  .py-5 {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+  .display-5 {
+    font-size: calc(1.425rem + 2.1vw);
+    font-weight: 300;
+    line-height: 1.2;
+  }
+  .fw-bolder {
+    font-weight: bolder !important
+  }
+  .lead {
+    font-size: 1.25rem;
+    font-weight: 300;
+  }
+  .py-5 {
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+  }
+
+  .px-5 {
+    padding-right: 3rem !important;
+    padding-left: 3rem !important;
+  }
+  .my-5 {
+    margin-top: 10rem !important;
+    margin-bottom: 3rem !important;
+  }
+  .my-7 {
+    margin-top: 0rem !important;
+    margin-bottom: 3rem !important;
+  }
+  .row {
+    --bs-gutter-x: 1.0rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(-1 * var(--bs-gutter-y));
+    margin-right: calc(-0.5 * var(--bs-gutter-x));
+    margin-left: calc(-0.5 * var(--bs-gutter-x));
+  }
+  .row > * {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * 0.5);
+    padding-left: calc(var(--bs-gutter-x) * 0.5);
+    margin-top: var(--bs-gutter-y);
+  }
+  .col-lg-4 {
+    flex: 0 0 auto;
+    width: 31%;
+  }
+  .mb-5 {
+    margin-bottom: 3rem !important;
+  }
+  .mb-lg-0 {
+    margin-bottom: 0 !important;
+  }
+  .feature {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 4rem;
+    width: 4rem;
+    font-size: 2rem;
+  }
+  .bg-gradient {
+    background-image: var(--bs-gradient) !important;
+  }
+  .text-white {
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-white-rgb), var(--bs-text-opacity)) !important;
+  }
+  .rounded-3 {
+    border-radius: var(--bs-border-radius-lg) !important;
+  }
+  .mb-3 {
+    margin-bottom: 1rem !important;
+  }
+  .fw-bolder {
+    font-weight: bolder !important;
+  }
+  h4, .h4 {
+    font-size: calc(1rem + 0.3vw);
+  }
+  .text-decoration-none {
+    text-decoration: none !important;
+  }
+  .row-cols-auto > * {
+    flex: 0 0 auto;
+    width: auto;
+  }
+  
+  .row-cols-1 > * {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+  
+  .row-cols-2 > * {
+    flex: 0 0 auto;
+    width: 50%;
+  }
+  
+  .row-cols-3 > * {
+    flex: 0 0 auto;
+    width: 33.3333333333%;
+  }
+  
+  .row-cols-4 > * {
+    flex: 0 0 auto;
+    width: 25%;
+  }
+}
+
+.top-right-link {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 16px; /* Increased font size */
+    font-weight: bold;
+    color: maroon;
+    text-decoration: none;
+}
+
+.top-right-link a:hover {
+    text-decoration: underline;
+}
+</style>

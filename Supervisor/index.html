@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Supervisor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Ensure the main container does not expand beyond the viewport */
+        .container {
+            max-width: 1400px; /* Increased max-width */
+            margin: 0 auto;
+        }
+
+        /* Ensure the sidebar does not expand beyond its content */
+        .sidebar {
+            width: 180px;
+            position: fixed;
+            height: 100%;
+            overflow-y: auto;
+            background-color: #f8f9fa;
+        }
+
+        /* Ensure the main content is properly contained */
+        .main {
+            margin-left: 200px;
+            padding: 20px;
+        }
+
+        /* Ensure the chart container is properly contained */
+        #analytics .container {
+            max-width: 1400px; /* Increased max-width */
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 20px;
+        }
+
+        /* Custom styles for the chart boxes */
+        .chart-box {
+            padding: 30px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            text-align: center;
+            height: 600px; /* Increased fixed height */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Changed to space-between */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            
+            
+        }
+
+        /* Ensure the chart canvas is properly contained */
+        #idpChart, #trainingChart, #competencyChart {
+            max-width: 100%;
+            height: 80% !important; /* Force consistent height */
+            width: 100% !important; /* Force consistent width */
+            margin: 35px auto;
+        }
+
+        /* Styling for the year selection */
+        .year-select {
+            margin: 20px auto 40px; /* Centered with bottom margin */
+            width: 200px;
+            text-align: center;
+        }
+
+        .year-select label {
+            font-weight: bold;
+            margin-right: 10px;
+            color: maroon;
+            font-size: 20px;
+            display: inline-block;
+        }
+
+        .year-select select {
+            padding: 5px 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 20px;
+            width: 100px;
+        }
+        h2 {
+            color: maroon;
+        }
+        h4 {
+            font-size: 20px;
+            font-weight: 500;
+            color: gold;
+            text-align: center;
+            margin-top: 20px;
+            shadow: 0.5px 0.5px maroon;
+            text-shadow: 0.5px 0.5px maroon;
+        }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .main {
+                margin-left: 0;
+                padding: 10px;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            .sidebar-navigation {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .sidebar-navigation a {
+                width: 100%;
+                text-align: center;
+                padding: 10px;
+                border-bottom: 1px solid #ddd;
+            }
+
+            #analytics .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Change the font color of the days' names */
+        .fc-col-header-cell {
+            color: #861f1f; /* Change this to your desired color */
+        }
+
+        /* Change the font color of the date cells */
+        .fc-daygrid-day-number {
+            color: #000000; /* Change this to your desired color */
+        }
+
+        /* Change the font color of the event titles */
+        .fc-event-title {
+            color: #f5f5f5; /* Change this to your desired color */
+        }
+
+        .fc-toolbar-title {
+            color: #000000; /* Change this to your desired color */
+        }
+
+        /* Tooltip styles */
+        .tooltip {
+            position: absolute;
+            z-index: 1000;
+            background: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: none;
+            color: #000; /* Set text color to black */
+        }
+
+/* Styling for the table container */
+.table-container {
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    overflow-x: auto; /* Enable horizontal scrolling if content overflows */
+    margin-top: 20px; /* Add 10px space above the container */
+    max-width: 2800px; /* Adjust the width to match the containers above */
+    margin-left: auto; /* Push the container to the right */
+    margin-right: 0; /* Align the container to the right */
+}
+/* Ensure the table fits within the container */
+.table-container table {
+    width: 100%; /* Ensure the table takes up the full width of the container */
+    border-collapse: collapse;
+    text-align: left;
+    table-layout: auto; /* Allow the table to adjust column widths */
+    margin: 20px 0; /* Add spacing around the table */
+    font-size: 14px; /* Adjust font size for better readability */
+    color: black; /* Ensure font color is black */
+    background-color: white; /* Ensure table background is white */
+}
+
+/* Table header and cell styling */
+.table-container table th,
+.table-container table td {
+    padding: 12px; /* Increase padding for better spacing */
+    border: 1px solid #ddd; /* Add border for all cells */
+    word-wrap: break-word; /* Prevent text overflow */
+    text-align: center; /* Center-align text */
+    color: black; /* Ensure text color is black */
+}
+
+/* Table header styling */
+.table-container table thead {
+    background-color: #f8f9fa; /* Light gray background for header */
+    color: maroon; /* Keep header text maroon */
+    font-weight: bold;
+}
+
+/* Zebra striping for table rows */
+.table-container table tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Add zebra striping */
+}
+
+/* Highlight row on hover */
+.table-container table tbody tr:hover {
+    background-color: #e9ecef; /* Highlight row on hover */
+}
+
+/* Responsive table adjustments */
+@media (max-width: 768px) {
+    .table-container table {
+        display: block;
+        overflow-x: auto; /* Add horizontal scrolling for smaller screens */
+        white-space: nowrap; /* Prevent text wrapping */
+    }
+
+    .table-container table th,
+    .table-container table td {
+        text-align: left; /* Align text to the left for better readability */
+        font-size: 12px; /* Reduce font size for smaller screens */
+    }
+}
+/* Styling for the Remarks buttons */
+.table-container table tbody tr td button {
+    background-color: #861f1f; /* Maroon background */
+    color: #fff; /* White text */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 8px 15px; /* Add padding */
+    font-size: 14px; /* Adjust font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+
+/* Hover effect for the Remarks buttons */
+.table-container table tbody tr td button:hover {
+    background-color: gold; /* Gold background on hover */
+    color: maroon; /* Maroon text on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+    transform: scale(1.05); /* Slightly enlarge the button */
+}
+
+/* Disabled button styling */
+.table-container table tbody tr td button:disabled {
+    background-color: #ccc; /* Gray background for disabled state */
+    color: #666; /* Darker gray text */
+    cursor: not-allowed; /* Not-allowed cursor */
+    box-shadow: none; /* Remove shadow */
+    transform: none; /* Remove scale effect */
+}
+/* Modal styles */
+.custom-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6); /* Darker background for better focus */
+}
+
+.custom-modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 30px;
+    border: 1px solid #ddd;
+    width: 40%;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.custom-modal-close {
+    color: #aaa;
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.custom-modal-close:hover,
+.custom-modal-close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#remarksInput {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    resize: none;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.modal-buttons .btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #b41e1e;
+    color: white;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    color: black;
+    border: none;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+}
+
+.btn-secondary {
+    background-color: #ddda33;
+    color: white;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.d-none {
+    display: none;
+}
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <a href="index.html" style="font-size: 32px; font-weight: bold; color: maroon; text-decoration: none;">
+                <span style="color: maroon;">HR</span><span style="color: gold; text-shadow: 1px 1px maroon;">Lynk</span>
+                <a href="../Homepage/logout.php" style="font-size: 32px; font-weight: bold; color: maroon; text-decoration: none;">
+                    <h4>Supervisor Portal</h4>
+            </a>
+        </div>
+        <nav class="sidebar-navigation">
+            <a href="index.html" class="sidebar-link active">Home</a>
+            <a href="../Supervisor/idpdashboard.php" class="sidebar-link">IDP</a>
+            <a href="../Supervisor/trainingrequestdashboard.php" class="sidebar-link">Training History</a>
+        </nav>
+        <nav class="sidebar-navigation side-nav">
+          <a href="../Homepage/Profile/profiledisplay.php" class="icon-button" aria-label="Profile"><i class="bi bi-person-circle"></i> Profile</a>
+          <a href="../Homepage/logout.php" class="icon-button" aria-label="Logout"><i class="bi bi-box-arrow-right"></i> Logout</a>
+        </nav>
+    </div>
+        
+    <main class="main">
+        <div class="year-select text-center" style="margin-bottom: 30px;">
+            <label for="globalYearSelect">Select Year:</label>
+            <select id="globalYearSelect">
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+            </select>
+        </div>
+        <section class="py-1" id="analytics">
+            <div class="container py-5 row gx-5 justify-content-center">
+                <div class="chart-box">
+                    <div class="text-center my-5">
+                        <h1 style="font-size: 30px !important;" class="display-5 fw-bolder">Individual Development Plan</h1>
+                        <canvas id="idpChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-box">
+                    <div class="text-center my-5">
+                        <h1 style="font-size: 30px !important;" class="display-5 fw-bolder">Training Requests</h1>
+                        <canvas id="trainingChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-box">
+                    <div class="text-center my-5">
+                        <h1 style="font-size: 30px !important;" class="display-5 fw-bolder">Competency Selections</h1>
+                        <canvas id="competencyChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-box">
+                    <div class="text-center my-5">
+                        <h1 style="font-size: 30px !important;" class="display-5 fw-bolder">Training Schedule</h1>
+                        <div id="calendar"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="container hrd-plan-container py-5">
+                <div class="table-container">
+                    <div class="text-center my-5">
+                        <h1 style="font-size: 30px !important;" class="display-5 fw-bolder">Annual HRD Plan</h1>
+                        <h2 style="font-size:18px !important;" class="display-5 fw-folder">January - December</h2>
+                    </div>
+                    <div id="hrdplan">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th rowspan="2">Priority HRD Needs</th>
+                                    <th rowspan="2">Action Plan (Attendance in Relevant L&D Program)</th>
+                                    <th colspan="2">1st Quarter</th>
+                                    <th colspan="2">2nd Quarter</th>
+                                    <th colspan="2">3rd Quarter</th>
+                                    <th colspan="2">4th Quarter</th>
+                                    <th rowspan="2">Totals</th>
+                                    <th rowspan="2">Remarks</th>
+                                </tr>
+                                <tr>
+                                    <th># of Participants</th>
+                                    <th>Estimated Budget</th>
+                                    <th># of Participants</th>
+                                    <th>Estimated Budget</th>
+                                    <th># of Participants</th>
+                                    <th>Estimated Budget</th>
+                                    <th># of Participants</th>
+                                    <th>Estimated Budget</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Rows will be dynamically populated -->
+                            </tbody>
+                            <tfoot>
+                                <!-- Footer will be dynamically populated -->
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src='https://unpkg.com/phosphor-icons'></script>
+    
+<!-- Custom Modal -->
+<div id="customModal" class="custom-modal">
+    <div class="custom-modal-content">
+        <span class="custom-modal-close">&times;</span>
+        <h5 id="modalTitle" class="modal-title">Remarks</h5>
+        <textarea id="remarksInput" class="form-control" rows="5" placeholder="Enter your remarks here..."></textarea>
+        <div class="modal-buttons">
+            <button id="saveRemarksButton" class="btn btn-primary">Save</button>
+            <button id="editRemarksButton" class="btn btn-warning d-none">Edit</button>
+            <button id="closeModalButton" class="btn btn-secondary">Close</button>
+        </div>
+    </div>
+</div>
+    <script>
+// Open the modal
+function openCustomModal(row) {
+    console.log('Row data:', row); // Debugging log
+    if (!row.competency_id) {
+        console.error('Missing competency_id in row:', row);
+        alert('Error: Missing competency_id. Please contact the administrator.');
+        return;
+    }
+
+    const modal = document.getElementById('customModal');
+    const remarksInput = document.getElementById('remarksInput');
+    const saveButton = document.getElementById('saveRemarksButton');
+    const editButton = document.getElementById('editRemarksButton');
+    const modalTitle = document.getElementById('modalTitle');
+
+    // Set modal title and remarks input based on row data
+    if (row.remarks) {
+        modalTitle.textContent = 'View Remarks';
+        remarksInput.value = row.remarks;
+        remarksInput.disabled = true; // Disable input for viewing
+        saveButton.classList.add('d-none'); // Hide Save button
+        editButton.classList.remove('d-none'); // Show Edit button
+    } else {
+        modalTitle.textContent = 'Add Remarks';
+        remarksInput.value = '';
+        remarksInput.disabled = false; // Enable input for adding
+        saveButton.classList.remove('d-none'); // Show Save button
+        editButton.classList.add('d-none'); // Hide Edit button
+    }
+
+    // Show the modal
+    modal.style.display = 'block';
+
+    // Save remarks
+    saveButton.onclick = () => {
+        const remarks = remarksInput.value.trim();
+        if (remarks) {
+            const payload = { id: row.competency_id, remarks };
+            console.log('Payload being sent:', payload); // Debugging log
+
+            fetch('save_hrd_remark.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Response from server:', data); // Debugging log
+                    if (data.success) {
+                        alert('Remarks saved successfully!');
+                        modal.style.display = 'none';
+                        populateHRDPlanTable(); // Refresh the table
+                    } else {
+                        alert('Failed to save remarks: ' + data.error);
+                    }
+                })
+                .catch(error => console.error('Error saving remarks:', error));
+        } else {
+            alert('Remarks cannot be empty!');
+        }
+    };
+
+    // Edit remarks
+    editButton.onclick = () => {
+        remarksInput.disabled = false; // Enable input for editing
+        saveButton.classList.remove('d-none'); // Show Save button
+        editButton.classList.add('d-none'); // Hide Edit button
+        modalTitle.textContent = 'Edit Remarks';
+    };
+}
+
+// Close the modal
+function closeCustomModal() {
+    const modal = document.getElementById('customModal');
+    modal.style.display = 'none';
+}
+
+// Add event listeners for closing the modal
+document.querySelector('.custom-modal-close').addEventListener('click', closeCustomModal);
+document.getElementById('closeModalButton').addEventListener('click', closeCustomModal);
+window.addEventListener('click', function (event) {
+    const modal = document.getElementById('customModal');
+    if (event.target === modal) {
+        closeCustomModal();
+    }
+});
+// Function to populate the HRD Plan table
+function populateHRDPlanTable() {
+    fetch('get_hrd_plan_data.php')
+        .then(response => response.json())
+        .then(data => {
+            const tbody = document.querySelector('#hrdplan tbody');
+            tbody.innerHTML = ''; // Clear existing rows
+
+            if (!data.data || data.data.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="12">No data available</td></tr>';
+                return;
+            }
+
+            // Populate table rows
+            data.data.forEach(row => {
+                const tr = document.createElement('tr');
+
+                // Priority HRD Needs
+                const priorityCell = document.createElement('td');
+                priorityCell.textContent = row.competency;
+                tr.appendChild(priorityCell);
+
+                // Action Plan
+                const actionPlanCell = document.createElement('td');
+                actionPlanCell.innerHTML = row.trainings ? row.trainings.split(', ').join('<br>') : 'No Trainings';
+                tr.appendChild(actionPlanCell);
+
+                // Quarterly Data
+                for (let i = 1; i <= 4; i++) {
+                    const participantsCell = document.createElement('td');
+                    participantsCell.textContent = row[`q${i}_participants`] || 0;
+
+                    // Add tooltip for participant names
+                    if (row[`q${i}_participant_names`]) {
+                        participantsCell.title = `Employees:\n${row[`q${i}_participant_names`]}`;
+                        participantsCell.style.cursor = 'pointer';
+                    }
+
+                    tr.appendChild(participantsCell);
+
+                    const budgetCell = document.createElement('td');
+                    budgetCell.textContent = row[`q${i}_budget`] ? parseFloat(row[`q${i}_budget`]).toFixed(2) : '0.00';
+                    tr.appendChild(budgetCell);
+                }
+
+                // Total Budget
+                const totalBudgetCell = document.createElement('td');
+                totalBudgetCell.textContent = row.total_budget ? parseFloat(row.total_budget).toFixed(2) : '0.00';
+                tr.appendChild(totalBudgetCell);
+
+                // Remarks Button
+                const remarksCell = document.createElement('td');
+                const remarksButton = document.createElement('button');
+                remarksButton.textContent = row.remarks ? 'View Remarks' : 'Add Remarks';
+                remarksButton.className = row.remarks ? 'btn btn-success' : 'btn btn-outline-primary';
+                remarksButton.addEventListener('click', () => openCustomModal(row)); // Pass the row object
+                remarksCell.appendChild(remarksButton);
+                tr.appendChild(remarksCell);
+
+                tbody.appendChild(tr);
+            });
+        })
+        .catch(error => console.error('Error fetching HRD Plan data:', error));
+}
+
+// Call the function on page load
+document.addEventListener('DOMContentLoaded', populateHRDPlanTable);
+        </script>
+    
+    <script>
+        let idpChartInstance;
+        let trainingChartInstance;
+        let competencyChartInstance;
+
+    // Function to update all charts based on selected year
+    function updateAllCharts(year) {
+        updateIdpChart(year);
+        updateTrainingChart(year);
+        updateCompetencyChart(year);
+    }
+// Function to fetch and update the IDP chart based on the selected year
+function updateIdpChart(year) {
+        fetch(`get_idp_data.php?year=${year}`)
+            .then(response => response.json())
+            .then(data => {
+                const ctx = document.getElementById('idpChart').getContext('2d');
+                if (idpChartInstance) {
+                    idpChartInstance.destroy();
+                }
+
+                const formattedData = data.reduce((acc, item) => {
+                    acc[item.status_key] = {
+                        count: parseInt(item.count),
+                        employees: item.employees ? item.employees.split(',') : []
+                    };
+                    return acc;
+                }, {
+                    submitted: { count: 0, employees: [] },
+                    to_be_reviewed: { count: 0, employees: [] },
+                    approved: { count: 0, employees: [] },
+                    rejected: { count: 0, employees: [] }
+                });
+
+                idpChartInstance = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Submitted', 'To Be Reviewed', 'Approved', 'Rejected'],
+                        datasets: [{
+                            label: 'Number of Employees',
+                            data: [
+                                formattedData.submitted.count,
+                                formattedData.to_be_reviewed.count,
+                                formattedData.approved.count,
+                                formattedData.rejected.count
+                            ],
+                            backgroundColor: [
+                                'rgba(0, 128, 128, 0.2)',
+                                'rgba(255, 165, 0, 0.2)',
+                                'rgba(255, 255, 0, 0.2)',
+                                'rgba(255, 0, 0, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(0, 128, 128, 1)',
+                                'rgba(255, 165, 0, 1)',
+                                'rgba(255, 255, 0, 1)',
+                                'rgba(255, 0, 0, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        plugins: {
+                            tooltip: {
+                                callbacks: {
+                                    afterLabel: function(context) {
+                                        const statusMap = {
+                                            'Submitted': 'submitted',
+                                            'To Be Reviewed': 'to_be_reviewed',
+                                            'Approved': 'approved',
+                                            'Rejected': 'rejected'
+                                        };
+                                        const status = statusMap[context.label];
+                                        const employees = formattedData[status].employees;
+
+                                        // Format employee names vertically
+                                        return employees.length > 0
+                                            ? 'Employees:\n' + employees.join('\n')
+                                            : 'No employees';
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    stepSize: 1
+                                }
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(error => console.error('Error fetching IDP data:', error));
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const idpYearSelect = document.getElementById('idpYearSelect');
+
+        idpYearSelect.addEventListener('change', function() {
+            updateIdpChart(this.value);
+        });
+
+        // Initialize the chart with the default year
+        updateIdpChart(idpYearSelect.value);
+    });
+
+        // Function to fetch and update the Training Requests chart based on the selected year
+function updateTrainingChart(year) {
+    fetch(`get_training_data.php?year=${year}`)
+        .then(response => response.json())
+        .then(data => {
+            const ctx = document.getElementById('trainingChart').getContext('2d');
+            if (trainingChartInstance) {
+                trainingChartInstance.destroy();
+            }
+
+            const formattedData = data.reduce((acc, item) => {
+                acc[item.status_key] = {
+                    count: parseInt(item.count),
+                    employees: item.employees ? item.employees.split(',') : []
+                };
+                return acc;
+            }, {
+                submitted: { count: 0, employees: [] },
+                to_be_reviewed: { count: 0, employees: [] },
+                approved: { count: 0, employees: [] },
+                rejected: { count: 0, employees: [] },
+                completed: { count: 0, employees: [] }
+            });
+
+            trainingChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Submitted', 'To Be Reviewed', 'Approved', 'Rejected', 'Completed'],
+                    datasets: [{
+                        label: 'Training Requests Status',
+                        data: [
+                            formattedData.submitted.count,
+                            formattedData.to_be_reviewed.count,
+                            formattedData.approved.count,
+                            formattedData.rejected.count,
+                            formattedData.completed.count
+                        ],
+                        backgroundColor: [
+                            'rgba(0, 128, 128, 0.2)', // Teal for 'Submitted'
+                            'rgba(255, 165, 0, 0.2)', // Orange for 'To Be Reviewed'
+                            'rgba(255, 255, 0, 0.2)', // Yellow for 'Approved'
+                            'rgba(255, 0, 0, 0.2)', // Red for 'Rejected'
+                            'rgba(0, 128, 0, 0.2)' // Green for 'Completed'
+                        ],
+                        borderColor: [
+                            'rgba(0, 128, 128, 1)', // Teal for 'Submitted'
+                            'rgba(255, 165, 0, 1)', // Orange for 'To Be Reviewed'
+                            'rgba(255, 255, 0, 1)', // Yellow for 'Approved'
+                            'rgba(255, 0, 0, 1)', // Red for 'Rejected'
+                            'rgba(0, 128, 0, 1)' // Green for 'Completed'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                afterLabel: function(context) {
+                                    const statusMap = {
+                                        'Submitted': 'submitted',
+                                        'To Be Reviewed': 'to_be_reviewed',
+                                        'Approved': 'approved',
+                                        'Rejected': 'rejected',
+                                        'Completed': 'completed'
+                                    };
+                                    const status = statusMap[context.label];
+                                    const employees = formattedData[status].employees;
+
+                                    // Format employee names vertically
+                                    return employees.length > 0
+                                        ? 'Employees:\n' + employees.join('\n')
+                                        : 'No employees';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1
+                            }
+                        }
+                    }
+                }
+            });
+        })
+        .catch(error => console.error('Error fetching Training Requests data:', error));
+}
+        // Function to fetch and update the Competency Selections chart based on the selected year
+        function updateCompetencyChart(year) {
+            fetch(`get_competency_data.php?year=${year}`)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data); // Log the data to verify it
+                    const ctx = document.getElementById('competencyChart').getContext('2d');
+                    if (competencyChartInstance) {
+                        competencyChartInstance.destroy();
+                    }
+                    competencyChartInstance = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: data.competencies.map(c => c.name),
+                            datasets: [{
+                                label: 'Competency Selections',
+                                data: data.competencies.map(c => c.count),
+                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                borderColor: 'rgba(75, 192, 192, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                })
+                .catch(error => console.error('Error fetching Competency data:', error));
+        }
+
+        // Function to initialize the calendar with training schedules
+        function initializeCalendar() {
+    const calendarEl = document.getElementById('calendar');
+    const calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        headerToolbar: {
+            left: 'title',
+            center: '',
+            right: 'today prev,next'
+        },
+        events: 'get_training_schedule.php',
+        eventColor: '#378006',
+        eventTextColor: '#ffffff',
+        eventDisplay: 'block',
+        eventTimeFormat: {
+            hour: '2-digit',
+            minute: '2-digit',
+            meridiem: false
+        },
+        eventMouseEnter: function(info) {
+            const tooltip = document.createElement('div');
+            tooltip.classList.add('tooltip');
+            tooltip.innerHTML = `
+                <strong>Employee Name:</strong> ${info.event.extendedProps.employeeName || 'N/A'}<br>
+                <strong>Training Title:</strong> ${info.event.title || 'N/A'}<br>
+                <strong>Venue:</strong> ${info.event.extendedProps.venue || 'N/A'}
+            `;
+            document.body.appendChild(tooltip);
+            tooltip.style.left = info.jsEvent.pageX + 'px';
+            tooltip.style.top = info.jsEvent.pageY + 'px';
+            tooltip.style.display = 'block';
+
+            info.el.addEventListener('mouseleave', function() {
+                tooltip.remove();
+            });
+        }
+    });
+    calendar.render();
+}
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const globalYearSelect = document.getElementById('globalYearSelect');
+
+        // Update all charts when year is changed
+        globalYearSelect.addEventListener('change', function() {
+            updateAllCharts(this.value);
+        });
+
+        // Initialize all charts with default year
+        updateAllCharts(globalYearSelect.value);
+
+        // Initialize calendar (keeping existing calendar functionality)
+        initializeCalendar();
+    });
+    </script>
+</body>
+</html>

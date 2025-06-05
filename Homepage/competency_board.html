@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Competency Board</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" href="css/style.css"> <!-- Fixed path -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        /* Add hover effects for cards */
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Add floating animation for sections */
+        .floating-section {
+            animation: floatIn 1.5s ease-out;
+        }
+
+        @keyframes floatIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h3 {
+            font-size: 1.2rem; /* Increased font size */
+        }
+
+        h4.fw-bold {
+            font-size: 1.0rem; /* Set font size for Key Concepts */
+        }
+
+        html {
+            scroll-behavior: smooth; /* Enable smooth scrolling */
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <a href="index.html" style="font-size: 32px; font-weight: bold; color: maroon; text-decoration: none;">
+                <span style="color: maroon;">HR</span><span style="color: gold; text-shadow: 1px 1px maroon;">Lynk</span>
+            </a>
+        </div>
+        <nav class="sidebar-navigation">
+            <a href="index.html" class="sidebar-link">Home</a>
+            <a href="../IDP/idpdashboard.php" class="sidebar-link">IDP</a>
+            <a href="../Training Request/trainingform.php" class="sidebar-link">Request Training</a>
+            <a href="../Training Request/trainingdashboard.php" class="sidebar-link">Training History</a>
+            <a href="competency_board.html" class="sidebar-link active">Competency Board</a>
+        </nav>
+        <nav class="sidebar-navigation side-nav">
+            <a href="../Profile/profiledisplay.php" class="icon-button" aria-label="Profile"><i class="bi bi-person-circle"></i> Profile</a>
+            <a href="logout.php" class="icon-button" aria-label="Logout"><i class="bi bi-box-arrow-right"></i> Logout</a>
+        </nav>
+    </div>
+
+    <main class="bg-container" style="margin-left: 210px;">
+        <div class="container py-5 floating-section">
+            <section class="featured-post border rounded p-4 shadow-sm mb-5 floating-section" style="border: 2px solid #ccc; display: flex; align-items: center; gap: 20px;">
+                <img src="../Homepage/images/competency.png" alt="Leadership" style="max-width: 100%; height: 250px; max-height: 900px; object-fit: cover; border-radius: 8px;">
+                <div class="content">
+                    <h1 class="display-4 fw-bold">Behavioral Competencies</h1>
+                  
+                    <p class="lead">The eight Behavioral Competencies, which describe the behaviours and attributes necessary for HR professionals to perform effectively in the workplace, are grouped into three clusters: Leadership, Interpersonal and Business.</p>
+                </div>
+            </section>
+            <div class="row gx-4 gy-4 floating-section">
+                <div class="col-lg-4">
+                    <div class="card shadow-sm">
+                        <img src="../Homepage/images/bg2.png" class="card-img-top" alt="Interpersonal">
+                        <div class="card-body">
+                            <h5 class="card-title text-uppercase text-muted text-center" style="font-size: calc(0.9rem + 2px);">Leadership Cluster</h5>
+                            <h2 class="h6 fw-bold" style="color: black;">Competencies:</h2>
+                            <p class="card-text">🎯 Leadership and Navigation <br> 🎯 Ethical Practice</p>
+                            <br>
+                            <a href="#leadership-cluster-section" class="btn btn-link text-decoration-none">Keep Reading →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card shadow-sm">
+                        <img src="../Homepage/images/interpersonal.webp" class="card-img-top" alt="Business">
+                        <div class="card-body">
+                            <h5 class="card-title text-uppercase text-muted text-center" style="font-size: calc(0.9rem + 2px);">Interpersonal</h5>
+                            <h2 class="h6 fw-bold" style="color: black;">Competencies:</h2>
+                            <p class="card-text">🎯 Relationship Management <br> 🎯 Communication <br> 🎯 Global and Cultural Effectiveness</p>
+                            <a href="#interpersonal-cluster-section" class="btn btn-link text-decoration-none">Keep Reading →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card shadow-sm">
+                        <img src="../Homepage/images/bg2.png" class="card-img-top" alt="Advanced Techniques">
+                        <div class="card-body">
+                            <h5 class="card-title text-uppercase text-muted text-center" style="font-size: calc(0.9rem + 2px);">Business</h5>
+                            <h2 class="h6 fw-bold" style="color: black;">Competencies:</h2>
+                            <p class="card-text">🎯 Business Acumen<br>🎯 Consultation <br> 🎯 Critical Evaluation</p>
+                            <a href="#business-cluster-section" class="btn btn-link text-decoration-none">Keep Reading →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<br>
+<br>
+<br>
+
+        <!-- New Leadership Cluster Section -->
+        <section id="leadership-cluster-section" class="mt-5 floating-section">
+            <div class="container" style="color: black; display: flex; align-items: flex-start; gap: 20px;">
+                <img src="../Homepage/images/leadercon.png" alt="Leadership Cluster" style="max-width: 40%; height: 600px; border-radius: 8px;">
+                <div>
+                    <h1 class="fw-bold mb-4">Leadership Cluster</h1>
+                    <div class="mb-4" style="font-size: 0.9rem;">
+                        <h3 class="fw-bold">🎯 Leadership and Navigation</h3>
+                        <p><strong>Definition:</strong> The knowledge, skills and abilities (KSAOs) needed to navigate the organization and accomplish HR goals, to create a compelling vision and mission for HR that aligns with the strategic direction and culture of the organization, to lead and promote organizational change, to manage the implementation and execution of HR initiatives, and to promote the role of HR as a key business partner.</p>
+                        <h4 class="fw-bold">Key Concepts:</h4>
+                        <ul>
+                            <li>➤ Leadership theories (e.g., situational leadership, transformational leadership, participative leadership, inclusive leadership)</li>
+                            <li>➤ People Management Techniques (e.g., directing, coaching, supporting, delegating).</li>
+                            <li>➤ Motivation theories (e.g., goal-setting theory, expectancy theory, attribution theory, self-determination theory).</li>
+                            <li>➤ Influence and persuasion techniques (e.g., personal appeal, forming coalitions, leading by example, rational persuasion).</li>
+                            <li>➤ Trust and relationship-building techniques (e.g., emotional and social intelligence).</li>
+                        </ul>
+                    </div>
+                    <br>
+                    <div style="font-size: 0.9rem;">
+                        <h3 class="fw-bold">🎯 Ethical Practice</h3>
+                        <p><strong>Definition:</strong> The knowledge, skills and abilities (KSAOs) needed to maintain high levels of personal and professional integrity, and to act as an ethical agent who promotes core values, integrity and accountability throughout the organization.</p>
+                        <h4 class="fw-bold">Key Concepts:</h4>
+                        <ul>
+                            <li>➤ Ethical business principles and practices (e.g., transparency, confidentiality, conflicts of interest).</li>
+                            <li>➤ Anonymity, confidentiality and privacy principles and policies.</li>
+                            <li>➤ Codes of conduct</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<br>
+<br>
+<br>
+
+        <!-- New Interpersonal Cluster Section -->
+        <section id="interpersonal-cluster-section" class="mt-5 floating-section">
+            <div class="container" style="color: black; display: flex; align-items: flex-start; gap: 20px; flex-direction: row-reverse;">
+                <img src="../Homepage/images/interperson.png" alt="Interpersonal Cluster" style="max-width: 47%; height: 800px; border-radius: 8px;">
+                <div>
+                    <h1 class="fw-bold mb-4">Interpersonal Cluster</h1>
+                    <div class="mb-4" style="font-size: 0.9rem;">
+                        <h3 class="fw-bold">🎯 Relationship Management</h3>
+                        <p><strong>Definition:</strong> The knowledge, skills and abilities (KSAOs) needed to create and maintain a network of professional contacts within and outside of the organization, to build and maintain relationships, to work as an effective member of a team, and to manage conflict while supporting the organization.</p>
+                        <h4 class="fw-bold">Key Concepts:</h4>
+                        <ul>
+                            <li>➤ Types of conflict (e.g., relationship, task, intra-organizational).</li>
+                            <li>➤ Conflict resolution styles (e.g., avoidance, competition, cooperation, conciliation).</li>
+                            <li>➤ Conflict resolution techniques (e.g., accommodate, avoid, collaborate).</li>
+                            <li>➤ Negotiation, tactics, strategies, and styles (e.g., perpective taking, principled, bargainer, auction, interest-based bargaining).</li>
+                        </ul>
+                    </div>
+                    <br>
+                    <div style="font-size: 0.9rem;">
+                        <h3 class="fw-bold">🎯 Communication</h3>
+                        <p><strong>Definition:</strong> The knowledge, skills and abilities (KSAOs) needed to effectively craft and deliver concise and informative communications, to listen to and address the concerns of others, and to transfer and translate information from one level or unit of the organization to another.</p>
+                        <h4 class="fw-bold">Key Concepts:</h4>
+                        <ul>
+                            <li>➤ Elements of communication (e.g., source, sender, receiver, message feedback).</li>
+                            <li>➤ General communication techniques (e.g., planning communications, active listening).</li>
+                            <li>➤ Communication techniques for specialized situations (e.g., giving feedback, facilitating focus groups, facilitating staff meetings).</li>
+                            <li>➤ Communication media (e.g., phone, e-mail, face-to-face, report, presentation, social media).</li>
+                        </ul>
+                    </div>
+                    <br>
+                    <div style="font-size: 0.9rem;">
+                        <h3 class="fw-bold">🎯 Global and Cultural Effectiveness</h3>
+                        <p><strong>Definition:</strong> The knowledge, skills and abilities (KSAOs) needed to value and consider the perspectives and backgrounds of all parties, to interact with others in a global context, and to promote a diverse and inclusive workplace.The knowledge, skills and abilities (KSAOs) needed to value and consider the perspectives and backgrounds of all parties, to interact with others in a global context, and to promote a diverse and inclusive workplace.</p>
+                        <h4 class="fw-bold">Key Concepts:</h4>
+                        <ul>
+                            <li>➤ Cultural intelligence</li>
+                            <li>➤ Cultural norms, values, and dimensions (e.g., Hall, Hofstede, Schein, Trompenaars models).</li>
+                            <li>➤ Techniques for bridging individual differences and perceptions (e.g., barrier removal,assimilation).</li>
+                            <li>➤ Interations and conflicts of professional and cultural value</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<br>
+<br>
+<br>
+
+        <!-- New Business Cluster Section -->
+        <section id="business-cluster-section" class="mt-5 floating-section">
+            <div class="container" style="color: black; display: flex; align-items: flex-start; gap: 20px;">
+                <img src="../Homepage/images/businesscon.jpg" alt="Business Cluster" style="max-width: 40%; height: 630px; border-radius: 8px;">
+                <div>
+                    <h1 class="fw-bold mb-4">Business Cluster</h1>
+                    <div class="mb-4" style="font-size: 0.9rem;">
+                        <h3 class="fw-bold">🎯 Business Acumen</h3>
+                        <p><strong>Definition:</strong> The knowledge, skills and abilities (KSAOs) needed to understand the organization's operations, functions, and external environment, and to apply business tools and analyses that inform HR initiatives and operations consistent with the overall strategic direction of the organization.</p>
+                        <h4 class="fw-bold">Key Concepts:</h4>
+                        <ul>
+                            <li>➤ Business operations and functions (e.g., finance, marketing, sales, operations, IT).</li>
+                            <li>➤ Strategic planning and alignment techniques.</li>
+                            <li>➤ Financial analysis and budgeting principles.</li>
+                        </ul>
+                    </div>
+                    <br>
+                    <div style="font-size: 0.9rem;">
+                        <h3 class="fw-bold">🎯 Consultation</h3>
+                        <p><strong>Definition:</strong> The knowledge, skills and abilities (KSAOs) needed to work with organizational stakeholders to assess needs, provide guidance, and recommend solutions that align with organizational goals.</p>
+                        <h4 class="fw-bold">Key Concepts:</h4>
+                        <ul>
+                            <li>➤ Consulting models and techniques (e.g., diagnostic, process consultation).</li>
+                            <li>➤ Change management principles and practices.</li>
+                            <li>➤ Problem-solving and decision-making techniques.</li>
+                        </ul>
+                    </div>
+                    <br>
+                    <div style="font-size: 0.9rem;">
+                        <h3 class="fw-bold">🎯 Critical Evaluation</h3>
+                        <p><strong>Definition:</strong> The knowledge, skills and abilities (KSAOs) needed to collect and analyze qualitative and quantitative data, and to interpret and promote findings that evaluate HR initiatives and inform business decisions and recommendations.</p>
+                        <h4 class="fw-bold">Key Concepts:</h4>
+                        <ul>
+                            <li>➤ Data collection and analysis techniques (e.g., surveys, focus groups, benchmarking).</li>
+                            <li>➤ Metrics and analytics (e.g., KPIs, ROI, predictive analytics).</li>
+                            <li>➤ Evidence-based decision-making.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <button id="back-to-top" style="display: none; position: fixed; bottom: 20px; right: 20px; background-color: maroon; color: white; border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 18px; cursor: pointer; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);">
+        ↑
+    </button>
+    <script>
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/scripts.js"></script> <!-- Ensure this file exists -->
+</body>
+</html>
+
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap");
+
+:root {
+  --c-text-primary: #282a32;
+  --c-text-secondary: #686b87;
+  --c-text-action: #404089;
+  --c-accent-primary: #434ce8;
+  --c-border-primary: #eff1f6;
+  --c-background-primary: #ffffff;
+  --c-background-secondary: #fdfcff;
+  --c-background-tertiary: #ecf3fe;
+  --c-background-quaternary: #e9ecf4;
+}
+
+body {
+  display: flex;
+  line-height: 1.5;
+  min-height: 100vh;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif, sans-serif;
+  background-color: var(--c-background-secondary);
+  color: var(--c-text-primary);
+}
+.logo {
+ text-align: center;
+ padding-bottom: 20px;
+}
+.sidebar {
+  width: 100px; /* Adjust width as needed */
+  background-color: var(--c-background-primary);
+  height: 100vh; /* Full height */
+  padding: 10px;
+  position: fixed; /* Fixes sidebar to the left */
+}
+
+.side-nav{
+  padding-top: 455px;
+  position: fixed;
+}
+
+.sidebar-navigation {
+  display: flex;
+  flex-direction: column;
+
+}
+.sidebar-link {
+  padding: 10px 10px; /* Adds padding around the text */
+  border-bottom: 1px solid rgb(0, 0, 0); /* Adds a border around the box */
+  text-decoration: none; /* Removes underline from links */
+  color: maroon; /* Sets the text color */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition effect */
+}
+
+.sidebar-link:hover {
+  background-color: rgba(128, 0, 0, 0.984) !important; /* Changes background on hover */
+  color: rgb(255, 255, 255) !important; /* Changes text color on hover */
+}
+.sidebar-link:active {
+  background-color: rgba(128, 0, 0, 0.984) !important; /* Changes background on hover */
+  color: rgb(255, 255, 255) !important; /* Changes text color on hover */
+}
+.sidebar-navigation a {
+  margin: 10px 0; /* Space between links */
+  text-decoration: none;
+  color: var(--c-text-action);
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.sidebar-navigation a:hover, .sidebar-navigation a:focus, .sidebar-navigation a:active {
+  color: var(--c-accent-primary);
+}@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;400;700&display=swap");
+
+:root {
+  --bg-img-url: url("/images/bg1.jpg");
+  --bg-gradient-color: rgba(138, 32, 32, 0.75);
+  --text-shadow-color: rgba(187, 38, 38, 0.75);
+}
+
+body {
+  display: flex;
+  font-family: "Be Vietnam Pro", sans-serif;
+  background-color: #fdfcff;
+  color: #ffffff;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #ffffff;
+  height: 100vh;
+  padding: 10px;
+  position: fixed;
+}
+
+.sidebar-navigation a {
+  margin: 10px 0;
+  text-decoration: none;
+  color: #404089;
+  font-weight: 300;
+  transition: color 0.15s ease;
+}
+
+.sidebar-navigation a:hover {
+  color: #434ce8;
+}
+
+main {
+  margin-left: 210px;
+  padding: 0px;
+  flex-grow: 1;
+}
+
+.bg-container {
+    background-color: #f9f9f9;
+    padding: 20px;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #6c757d;
+}
+
+.card-text {
+    font-size: 0.95rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.btn-link {
+    color: maroon;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.btn-link:hover {
+    text-decoration: underline;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #333;
+}
+
+.lead {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.container-bg-img {
+  width: 100%;
+  min-height: 100vh;
+  background-image: linear-gradient(rgba(138, 32, 32, 0.75),rgba(187, 38, 38, 0.75)),url(/images/bg1.jpg);
+  background-size: cover;
+  background-position: center;
+  padding: 10px 0%;
+}
+
+/* Style each feature box */
+.feature-box {
+  background-color: rgba(206, 218, 40, 0.685);
+  border: 1px solid #dfdfdf;
+  border-radius: 15px;
+  padding: 10px;
+  padding-left: 15px;  
+  padding-right: 15px;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.feature-box h2 {
+  margin-top: 15px;
+  color: black;
+  
+}
+
+.feature-box p {
+  color: rgb(0, 0, 0);
+  margin-top: 10px;
+}
+
+.feature-box a {
+  color: #eee;
+  text-shadow: 0.5px 0.5px maroon;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.feature-box a:hover {
+  color: #eee;
+  text-decoration: underline;
+}
+
+.feature-box img.icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 10px;
+}
+
+/* Adjust layout for responsiveness */
+@media (min-width: 992px) {
+  .boxes {
+    width: auto;
+    padding: 20px;
+  }
+  .feature-box {
+    height: 100%; /* Make sure all boxes have the same height */
+  }
+}
+
+@media (max-width: 991px) {
+  .boxes {
+    width: 100%; /* Make the boxes full-width on smaller screens */
+    margin-bottom: 10px;
+  }
+}
+
+.feature h2 {
+  color: maroon;
+}
+
+.feature p {
+  color: black;
+}
+
+.feature a {
+  color: gold;
+  text-shadow: 0.5px 0.5px maroon;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+:focus {
+  outline: 0;
+}
+
+.responsive-wrapper {
+  width: 90%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.view-button {
+  background-color: maroon; /* Set button background color to maroon */
+  color: white; /* Button text color */
+  border: none; /* Remove border */
+  padding: 5px 10px; /* Add padding for size */
+  border-radius: 8px; /* Rounded corners */
+  cursor: pointer; /* Pointer on hover */
+  text-align: center; /* Center the text */
+  text-decoration: none; /* Remove underline from text */
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+  font-size: 12px; 
+}
+
+.view-button:hover {
+  background-color: #6b0000c0; /* Darker maroon on hover */
+}
+
+.view-button:focus {
+  outline: none; /* Remove focus outline */
+}
+
+/* Responsive adjustments for layout */
+@media (min-width: 768px) {
+  .col-lg-6 {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+  .text-center {
+    text-align: center !important;
+  }
+  .justify-content-center {
+    justify-content: center !important;
+  }
+  .g-5,
+  .gx-5 {
+    --bs-gutter-x: 3rem;
+  }
+  .py-5 {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+  .display-5 {
+    font-size: calc(1.425rem + 2.1vw);
+    font-weight: 300;
+    line-height: 1.2;
+  }
+  .fw-bolder {
+    font-weight: bolder !important
+  }
+  .lead {
+    font-size: 1.25rem;
+    font-weight: 300;
+  }
+  .py-5 {
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+  }
+
+  .px-5 {
+    padding-right: 3rem !important;
+    padding-left: 3rem !important;
+  }
+  .my-5 {
+    margin-top: 10rem !important;
+    margin-bottom: 3rem !important;
+  }
+  .my-7 {
+    margin-top: 0rem !important;
+    margin-bottom: 3rem !important;
+  }
+  .row {
+    --bs-gutter-x: 1.0rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(-1 * var(--bs-gutter-y));
+    margin-right: calc(-0.5 * var(--bs-gutter-x));
+    margin-left: calc(-0.5 * var(--bs-gutter-x));
+  }
+  .row > * {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * 0.5);
+    padding-left: calc(var(--bs-gutter-x) * 0.5);
+    margin-top: var(--bs-gutter-y);
+  }
+  .col-lg-4 {
+    flex: 0 0 auto;
+    width: 31%;
+  }
+  .mb-5 {
+    margin-bottom: 3rem !important;
+  }
+  .mb-lg-0 {
+    margin-bottom: 0 !important;
+  }
+  .feature {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 4rem;
+    width: 4rem;
+    font-size: 2rem;
+  }
+  .bg-gradient {
+    background-image: var(--bs-gradient) !important;
+  }
+  .text-white {
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-white-rgb), var(--bs-text-opacity)) !important;
+  }
+  .rounded-3 {
+    border-radius: var(--bs-border-radius-lg) !important;
+  }
+  .mb-3 {
+    margin-bottom: 1rem !important;
+  }
+  .fw-bolder {
+    font-weight: bolder !important;
+  }
+  h4, .h4 {
+    font-size: calc(1rem + 0.3vw);
+  }
+  .text-decoration-none {
+    text-decoration: none !important;
+  }
+  .row-cols-auto > * {
+    flex: 0 0 auto;
+    width: auto;
+  }
+  
+  .row-cols-1 > * {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+  
+  .row-cols-2 > * {
+    flex: 0 0 auto;
+    width: 50%;
+  }
+  
+  .row-cols-3 > * {
+    flex: 0 0 auto;
+    width: 33.3333333333%;
+  }
+  
+  .row-cols-4 > * {
+    flex: 0 0 auto;
+    width: 25%;
+  }
+}
+
+.top-right-link {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 16px; /* Increased font size */
+    font-weight: bold;
+    color: maroon;
+    text-decoration: none;
+}
+
+.top-right-link a:hover {
+    text-decoration: underline;
+}
+</style>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Learning Application Plan</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 20mm;
+    }
+    body {
+      font-family: 'Times New Roman', serif;
+      font-size: 12px;
+      color: black;
+      width: 210mm;
+      margin: auto;
+    }
+
+    /* Make everything bold by default */
+    body * {
+      font-weight: bold;
+    }
+
+    /* Exceptions: Header area */
+    .header, .header * {
+      font-weight: normal !important;
+    }
+
+    /* Exceptions: Form input and textarea */
+    input[type="text"],
+    input[type="date"],
+    textarea {
+      font-weight: normal;
+    }
+
+    /* Exception: Final acknowledgment line */
+    .hrmd-receipt {
+      font-weight: normal;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      width: 70px;
+      margin-right: 10px;
+    }
+    .header-text {
+      flex: 1;
+      text-align: left;
+    }
+    .header-text h2 {
+      color: red;
+      font-family: 'Monotype Corsiva', cursive;
+      margin: 0;
+    }
+    .header-text h3 {
+      color: #ED1C24;
+      margin: 0;
+    }
+    .header-text a {
+      color: #FBBF18;
+      text-decoration: none;
+    }
+    .form-container {
+      border: 1px solid black;
+      padding: 15px;
+      margin-top: 10px;
+    }
+    h4 {
+      text-align: center;
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+    .section-title {
+      margin-top: 10px;
+    }
+    input[type="text"], input[type="date"], textarea {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid black;
+      font-family: 'Times New Roman';
+    }
+    textarea.expandable {
+      resize: vertical;
+      min-height: 50px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 5px;
+    }
+    td, th {
+      border: 1px solid black;
+      padding: 5px;
+      text-align: center;
+    }
+    .commitment {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .sign-line {
+      width: 40%;
+      border-top: 1px solid black;
+      margin-top: 40px;
+      display: inline-block;
+      text-align: center;
+    }
+    .inline-checkbox {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="../assets/msu-iit-logo.png" class="logo" alt="logo">
+    <div class="header-text">
+      <div>Republic of the Philippines</div>
+      <p style="margin: 0; font-family: 'Monotype Corsiva', 'Times New Roman', cursive; font-weight: bold; font-size: 16px; color: red;">Mindanao State University</p>
+      <p style="margin: 0; font-weight: bold; color: red;">ILIGAN INSTITUTE OF TECHNOLOGY</p>
+      <div>Iligan City 9200 Philippines</div>
+      <a href="http://www.msuiit.edu.ph">http://www.msuiit.edu.ph</a>
+    </div>
+    <div style="text-align: right; font-size: 12px; color: red;">L&D Form No. 3</div>
+  </div>
+
+  <hr style="border-top: 2px solid black;">
+
+  <h4>LEARNING APPLICATION PLAN</h4>
+  <div style="text-align: center;">
+    (To be submitted to HRMD together with Terminal Report of attendee)<br>
+    <span style="color: green;">[CSC PRIME-HRM Evidence]</span>
+  </div>
+
+  <!-- CHECKBOX SECTION OUTSIDE BORDER -->
+  <div class="inline-checkbox"><input type="checkbox"> Training</div>
+  <div class="inline-checkbox"><input type="checkbox"> Seminar/Symposium/Workshop/Conference/Convention/Online attendance</div>
+  <div class="inline-checkbox">
+    <input type="checkbox"> Others (please specify): 
+    <input type="text" style="width: 50%; display: inline-block;">
+  </div>
+
+  <!-- BORDERED FORM SECTION -->
+  <div class="form-container">
+
+    <div class="section-title">TITLE:</div>
+    <input type="text">
+
+    <div class="section-title">ORGANIZER/SPONSOR OF PROGRAM:</div>
+    <input type="text">
+
+    <div class="section-title">INCLUSIVE DATES:</div>
+    <table>
+      <tr>
+        <td><strong>FROM</strong><br><input type="date" id="fromDate" onchange="calculateDays()"></td>
+        <td><strong>TO</strong><br><input type="date" id="toDate" onchange="calculateDays()"></td>
+        <td><strong>NO. OF DAYS</strong><br><input type="text" id="numDays" readonly></td>
+        <td><strong>NO. OF HOURS</strong><br><input type="text"></td>
+      </tr>
+    </table>
+
+    <div class="section-title">VENUE:</div>
+    <input type="text">
+
+    <div class="section-title">BRIEF LISTING OF LEARNING:</div>
+    <textarea rows="4"></textarea>
+
+    <div class="section-title">RECOMMENDATION/ACTION STEPS TO APPLY LEARNING AT WORK:</div>
+    <table>
+      <tr>
+        <th>Function</th>
+        <th>Activity</th>
+        <th>Period</th>
+        <th>Resource Needed</th>
+        <th>Monitoring & Evaluation</th>
+      </tr>
+      <tr>
+        <td><textarea class="expandable"></textarea></td>
+        <td><textarea class="expandable"></textarea></td>
+        <td><textarea class="expandable"></textarea></td>
+        <td><textarea class="expandable"></textarea></td>
+        <td><textarea class="expandable"></textarea></td>
+      </tr>
+    </table>
+
+    <p class="commitment">We hereby commit ourselves to implement this recommendation or action steps.</p>
+
+    <div style="text-align: center;">
+      <div class="sign-line">Employee</div>
+      <div class="sign-line" style="margin-left: 30px;">Supervisor</div>
+    </div>
+  </div>
+
+  <!-- ACKNOWLEDGMENT LINE OUTSIDE BORDER -->
+  <p class="hrmd-receipt" style="margin-top: 30px;">Received copy for HRMD-L&D by: ___________________________</p>
+
+  <script>
+    function calculateDays() {
+      const from = new Date(document.getElementById('fromDate').value);
+      const to = new Date(document.getElementById('toDate').value);
+      if (!isNaN(from) && !isNaN(to)) {
+        const timeDiff = to.getTime() - from.getTime();
+        const days = Math.floor(timeDiff / (1000 * 3600 * 24)) + 1;
+        document.getElementById('numDays').value = days > 0 ? days : 0;
+      }
+    }
+  </script>
+</body>
+</html>
